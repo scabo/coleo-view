@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+declare(strict_types=1);
 
 namespace Coleo\View;
 
@@ -13,7 +15,7 @@ class TwigViewer implements ViewerInterface
     }
 
     public function addGlobal($varName, $value): self
-    {   
+    {
         $this->twig->addGlobal($varName, $value);
         return $this;
     }
