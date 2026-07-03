@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Coleo\View;
 
+use Twig\Extension\AbstractExtension;
+
 class TwigViewer implements ViewerInterface
 {
     private \Twig\Environment $twig;
@@ -12,6 +14,12 @@ class TwigViewer implements ViewerInterface
     {
         $loader = new \Twig\Loader\FilesystemLoader($templatePath);
         $this->twig = new \Twig\Environment($loader, $options);
+    }
+
+    public function addExtension(AbstractExtension $extension): self
+    {
+        $this->twig->addExtension($extension);
+        return $this;
     }
 
     public function addGlobal($varName, $value): self
